@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ColorMyViews.iml" filepath="$PROJECT_DIR$/.idea/modules/ColorMyViews.iml" group="ColorMyViews" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aboutMe.iml" filepath="$PROJECT_DIR$/.idea/modules/aboutMe.iml" group="aboutMe" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="aboutMe/app" />
     </modules>
   </component>
 </project>
