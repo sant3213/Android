@@ -1,0 +1,42 @@
+Las respuestas tienen varias 'X' al final 
+
+Pregunta 1
+En un ConstraintLayout, ¿cuál de las siguientes opciones describe las restricciones necesarias para mantener una vista en su lugar durante el tiempo de ejecución?
+
+Dos restricciones horizontales.
+Una restricción vertical.
+Al menos una restricción horizontal y una vertical.XXXX
+No es necesario restringir la vista.
+
+Pregunta 2
+¿Cuál de los siguientes tipos de restricción expande una vista solo tanto como sea necesario para ajustarse a su contenido?
+
+Envolver contenido
+Restricción de coincidencia
+Restricción fija.XXXXX
+Restricción de línea base
+
+
+Pregunta 3
+La restricción de línea base alinea la línea base de texto de una vista con la línea base del texto de otra vista. ¿Verdadero o falso?
+
+Verdad.XXXX
+Falso
+
+
+Pregunta 4
+El inspector de vistas solo está disponible para vistas en _______ .
+
+Un ConstraintLayout
+ConstraintLayout O LinearLayout.XXXXX
+Cualquier ViewGroup
+Un LinearLayout
+
+
+Pregunta 5
+Una cadena es un grupo de vistas que están vinculadas entre sí con ________ .
+
+Restricciones superiores e inferiores
+Restricciones bidireccionales
+Restricciones derecha e izquierda
+Restricciones de línea base.XXXXX
