@@ -9,14 +9,25 @@
 
 
     <EditText
-        android:id="@+id/addFirstName"
+        android:id="@+id/addUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:hint="Nombre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/addEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="204dp"
+        android:ems="10"
+        android:hint="Correo electrónico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,14 +35,14 @@
         android:id="@+id/addPassword"
         android:layout_width="match_parent"
         android:layout_height="39dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="96dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/addEmail" />
 
     <Button
         android:id="@+id/registerButton"

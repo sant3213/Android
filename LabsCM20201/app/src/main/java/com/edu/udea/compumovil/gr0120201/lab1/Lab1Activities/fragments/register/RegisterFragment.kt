@@ -36,23 +36,24 @@ class RegisterFragment : Fragment() {
     }
 
     private fun insertDataToDatabase(){
-        val email = addFirstName.text.toString()
+        val userName = addUserName.text.toString()
+        val email = addEmail.text.toString()
         val password = addPassword.text.toString()
 
-        if(inputCheck(email, password)){
+        if(inputCheck(userName, email, password)){
             // Create User Object
-            val user = User(1, email, password)
+            val user = User(userName, email, password)
             // Add Data to Database
             mUserViewModel.addUser(user)
-            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Agregado exitosamente!", Toast.LENGTH_LONG).show()
             // Navigate Back
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }else{
-            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Por favor llene todos los campos.", Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String): Boolean{
-        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName))
+    private fun inputCheck(userName: String, email: String, lastName: String): Boolean{
+        return !(TextUtils.isEmpty(userName) && TextUtils.isEmpty(email) && TextUtils.isEmpty(lastName))
     }
 }
