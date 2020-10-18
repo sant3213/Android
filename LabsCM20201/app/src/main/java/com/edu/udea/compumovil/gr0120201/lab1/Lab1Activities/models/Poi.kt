@@ -3,11 +3,9 @@ package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "user")
-data class User(
+@Entity(tableName = "poi")
+data class Poi(
     @PrimaryKey
-    val user_name: String,
-    val password: String
-){
-    constructor() : this("", "")
-}
+    val title: String,
+    val description: String
+)

@@ -12,9 +12,9 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addUser(user: User)
 
-    @Query("SELECT * FROM user ORDER BY email ASC")
+    @Query("SELECT * FROM user ORDER BY user_name ASC")
     fun readAllData(): LiveData<List<User>>
 
-    @Query("SELECT * FROM user WHERE email LIKE :first")
+    @Query("SELECT * FROM user WHERE user_name = :first")
     fun findByEmail(first: String): User
 }

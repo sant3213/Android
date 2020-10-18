@@ -3,6 +3,7 @@ package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.Config.UserDatabase
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.Respositories.UserRepository
@@ -12,8 +13,9 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<User>>
+     val readAllData: LiveData<List<User>>
     private val repository: UserRepository
+
 
     init {
         val userDao = UserDatabase.getDatabase(application).userDao()
@@ -27,4 +29,11 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun getUser(userName: String): User {
+        var user = User()
+        viewModelScope. launch(Dispatchers.IO) {
+             user = repository.getUser(userName)
+        }
+        return user
+    }
 }

@@ -1,7 +1,6 @@
 package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.register
 
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,7 +41,7 @@ class RegisterFragment : Fragment() {
 
         if(inputCheck(userName, email, password)){
             // Create User Object
-            val user = User(userName, email, password)
+            val user = User(userName, password)
             // Add Data to Database
             mUserViewModel.addUser(user)
             Toast.makeText(requireContext(), "Agregado exitosamente!", Toast.LENGTH_LONG).show()
