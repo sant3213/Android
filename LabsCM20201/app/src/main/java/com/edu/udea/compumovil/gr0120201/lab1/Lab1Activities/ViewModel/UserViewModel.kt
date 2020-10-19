@@ -13,9 +13,9 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
 
-     val readAllData: LiveData<List<User>>
+    val readAllData: LiveData<List<User>>
     private val repository: UserRepository
-
+    var userGotted = MutableLiveData<User>()
 
     init {
         val userDao = UserDatabase.getDatabase(application).userDao()
@@ -33,6 +33,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         var user = User()
         viewModelScope. launch(Dispatchers.IO) {
              user = repository.getUser(userName)
+            userGotted.postValue(user)
         }
         return user
     }
