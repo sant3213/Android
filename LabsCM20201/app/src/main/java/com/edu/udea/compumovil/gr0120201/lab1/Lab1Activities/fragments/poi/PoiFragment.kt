@@ -26,9 +26,9 @@ class PoiFragment : Fragment() {
 
         // Recyclerview
         val adapter = ListAdapter()
-        /*val recyclerView = view.recyclerview
+        val recyclerView = view.recyclerview
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())*/
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
         
         // UserViewModel
         mPoiViewModel = ViewModelProvider(this).get(PoiViewModel::class.java)

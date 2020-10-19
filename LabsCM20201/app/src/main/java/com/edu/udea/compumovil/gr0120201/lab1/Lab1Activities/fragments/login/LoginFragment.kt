@@ -46,9 +46,6 @@ class LoginFragment: Fragment() {
         mUserViewModel.getUser(userName)
         val imm = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view?.getWindowToken(), 0);
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
-            println(user)
-        })
 
         mUserViewModel.userGotted.observe(viewLifecycleOwner, Observer { user ->
             username.setText("")
@@ -67,7 +64,6 @@ class LoginFragment: Fragment() {
                 findNavController().navigate(R.id.action_loginFragment_to_poiListFragment)
             }
 
-            // redireccionar al home (lista de lugares)
         })
     }
 }
