@@ -51,18 +51,23 @@ class LoginFragment: Fragment() {
         })
 
         mUserViewModel.userGotted.observe(viewLifecycleOwner, Observer { user ->
-
+            username.setText("")
+            password.setText("")
             if (user == null || user.password != passwordIn) Toast.makeText(
                 requireContext(),
                 "Usuario o contraseña incorrecta",
                 Toast.LENGTH_LONG
             ).show()
-            else
+            else {
                 Toast.makeText(
                     requireContext(),
                     "Ingresando",
                     Toast.LENGTH_LONG
-                ).show()// redireccionar al home (lista de lugares)
+                ).show()
+                findNavController().navigate(R.id.action_loginFragment_to_poiListFragment)
+            }
+
+            // redireccionar al home (lista de lugares)
         })
     }
 }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_poiListFragment"
+            app:destination="@id/poiListFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -22,5 +25,26 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poiFragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiFragment"
+        android:label="fragment_poi"
+        tools:layout="@layout/fragment_poi" >
+        <action
+            android:id="@+id/action_poiFragment_to_poiListFragment"
+            app:destination="@id/poiListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poiListFragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiListFragment"
+        android:label="fragment_poi_list"
+        tools:layout="@layout/fragment_poi_list" >
+        <action
+            android:id="@+id/action_poiListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_poiListFragment_to_poiFragment"
+            app:destination="@id/poiFragment" />
     </fragment>
 </navigation>

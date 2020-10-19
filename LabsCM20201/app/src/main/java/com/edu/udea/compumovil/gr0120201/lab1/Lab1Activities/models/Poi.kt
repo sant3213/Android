@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class Poi(
     @PrimaryKey
     val title: String,
-    val description: String
+    val description: String,
+    val location: String
 )

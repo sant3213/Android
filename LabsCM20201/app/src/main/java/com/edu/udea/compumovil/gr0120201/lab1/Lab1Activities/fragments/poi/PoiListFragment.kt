@@ -1,4 +1,4 @@
-package com.edu.udea.compumovil.gr0120201.lab1
+package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.PoiViewModel
-import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.ListAdapter
+import com.edu.udea.compumovil.gr0120201.lab1.R
 import kotlinx.android.synthetic.main.fragment_poi_list.view.*
 
 class PoiListFragment : Fragment() {
@@ -30,7 +30,7 @@ class PoiListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // UserViewModel
+
         mPoiViewModel = ViewModelProvider(this).get(PoiViewModel::class.java)
         mPoiViewModel.readAllData.observe(viewLifecycleOwner, Observer { poi ->
             adapter.setData(poi)
@@ -39,8 +39,6 @@ class PoiListFragment : Fragment() {
         view.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_poiListFragment_to_poiFragment)
         }
-
         return view
     }
-
 }
