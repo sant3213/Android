@@ -1,6 +1,7 @@
 package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -33,6 +34,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         var user = User()
         viewModelScope. launch(Dispatchers.IO) {
              user = repository.getUser(userName)
+
             userGotted.postValue(user)
         }
         return user

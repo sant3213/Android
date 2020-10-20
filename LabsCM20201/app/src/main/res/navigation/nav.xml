@@ -39,10 +39,7 @@
         android:id="@+id/poiListFragment"
         android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiListFragment"
         android:label="Lista de Lugares de interés"
-        tools:layout="@layout/fragment_poi_list" >
-        <action
-            android:id="@+id/action_poiListFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+        tools:layout="@layout/fragment_poi_list">
         <action
             android:id="@+id/action_poiListFragment_to_poiFragment"
             app:destination="@id/poiFragment" />
