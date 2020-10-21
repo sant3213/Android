@@ -3,6 +3,7 @@ package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.login
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,6 @@ import com.edu.udea.compumovil.gr0120201.lab1.R
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.User
-import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.*
 
 class LoginFragment: Fragment() {
@@ -53,55 +53,62 @@ class LoginFragment: Fragment() {
 
             val passwordIn = password.text.toString()
             val userName = username.text.toString()
-            getUserInput(userName)
+            clearData()
 
             val coroutineScope = CoroutineScope(Dispatchers.Main)
+
             val deferred1: Deferred<Unit> = coroutineScope.async {
+                mUserViewModel.getUser(userName)
+                clearData()
+            }
+            val deferred2: Deferred<Unit> = coroutineScope.async {
                 mUserViewModel.userGotted.observe(viewLifecycleOwner, Observer { user ->
                     userr=user
                 })
                 }
-            val deferred2: Deferred<Unit> = coroutineScope.async {
-                isloggued = validateUser(userr, passwordIn)
-                println("Estoy logueado?"+isloggued)
-            }
             val deferred3: Deferred<Unit> = coroutineScope.async {
-                println("Paso a pantalla? "+isloggued)
+                delay(100)
+                validateUser(userr, passwordIn)
+            }
+            val deferred4: Deferred<Unit> = coroutineScope.async {
+                delay(100)
                 if (isloggued) findNavController().navigate(R.id.action_loginFragment_to_poiListFragment)
             }
             coroutineScope.launch{
                 deferred1.await()
                 deferred2.await()
                 deferred3.await()
+                deferred4.await()
             }
         }
         return view
     }
 
-    private fun getUserInput(userName: String) {
+
+    private fun clearData(){
         username.setText("")
         password.setText("")
-        mUserViewModel.getUser(userName)
     }
 
-    private fun validateUser(userr:User, pass:String): Boolean{
+    private fun validateUser(userr:User, pass:String){
         if (userr == null || userr.password != pass) {
             Toast.makeText(
                 requireContext(),
                 "Usuario o contraseña incorrecta",
                 Toast.LENGTH_LONG
             ).show()
-            isloggued=false
+            saveToShare(false)
+            getSharePref()
+
         } else {
             Toast.makeText(
                 requireContext(),
                 "Ingresando",
                 Toast.LENGTH_LONG
             ).show()
-
-            isloggued = true
+            saveToShare(true)
+            getSharePref()
         }
-        return isloggued
     }
 
     private fun saveToShare(isLoggued: Boolean){
@@ -110,5 +117,11 @@ class LoginFragment: Fragment() {
             putBoolean(SHARED_PREFS, isLoggued)
             apply()
         }
+    }
+
+    private fun getSharePref() {
+        val sharedPrefSet = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+            sharedPrefSet.getBoolean(SHARED_PREFS,false)
+        isloggued= sharedPrefSet.getBoolean(SHARED_PREFS, false)
     }
 }

@@ -30,13 +30,11 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun getUser(userName: String): User {
+    fun getUser(userName: String) {
         var user = User()
         viewModelScope. launch(Dispatchers.IO) {
              user = repository.getUser(userName)
-
             userGotted.postValue(user)
         }
-        return user
     }
 }

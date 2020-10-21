@@ -10,18 +10,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.PoiViewModel
-import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi
-import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.User
 import com.edu.udea.compumovil.gr0120201.lab1.R
 import kotlinx.android.synthetic.main.fragment_poi_list.view.*
 
 class PoiListFragment : Fragment() {
-
     private lateinit var mPoiViewModel: PoiViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_poi_list, container, false)
@@ -43,6 +41,11 @@ class PoiListFragment : Fragment() {
         view.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_poiListFragment_to_poiFragment)
         }
+
         return view
     }
+    /*override fun onBackPressed() {
+        Toast.makeText(applicationContext, "Disabled Back Press", Toast.LENGTH_SHORT).show()
+    }*/
+
 }
