@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         prefs = Prefs(applicationContext)
-
+        prefs.setUserState(applicationContext, false)
         setContentView(R.layout.activity_main)
         val appBarConfig= AppBarConfiguration.Builder(R.id.poiListFragment,R.id.poiListFragment)
             .build()
@@ -29,24 +29,12 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.fragment).navigate(R.id.action_loginFragment_to_poiListFragment)
         } else
             findNavController(R.id.fragment)
-
-
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragment)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
-
-  /*  private fun rout() {
-        var nav: Unit // findNavController(R.id.fragment)
-        if (prefs.getUserState(applicationContext)) {
-            nav = findNavController(R.id.fragment).navigate(R.id.action_loginFragment_to_poiListFragment)
-        } else
-             nav = findNavController(R.id.poiListFragment)
-        return nav
-    }*/
 
     override fun onBackPressed() {
     }
