@@ -1,20 +1,17 @@
 package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.login
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.UserViewModel
-import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiFragment
 import com.edu.udea.compumovil.gr0120201.lab1.R
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.User
@@ -86,7 +83,7 @@ class LoginFragment: Fragment() {
         }
         val deferred4: Deferred<Unit> = coroutineScope.async {
             delay(100)
-            if (prefs.getUserState(requireContext().applicationContext, SHARED_STATE)) {
+            if (prefs.getPrefState(requireContext().applicationContext, SHARED_STATE)) {
                 findNavController().navigate(R.id.action_loginFragment_to_poiListFragment)
               // activity?.supportFragmentManager?.beginTransaction()?.ba
             }else{
@@ -117,7 +114,7 @@ class LoginFragment: Fragment() {
                 "Usuario o contraseña incorrecta",
                 Toast.LENGTH_LONG
             ).show()
-            prefs.setUserState(requireContext().applicationContext, SHARED_STATE,false)
+            prefs.setPrefState(requireContext().applicationContext, SHARED_STATE,false)
 
         } else {
             Toast.makeText(
@@ -125,7 +122,7 @@ class LoginFragment: Fragment() {
                 "Ingresando",
                 Toast.LENGTH_LONG
             ).show()
-            prefs.setUserState(requireContext().applicationContext, SHARED_STATE,true)
+            prefs.setPrefState(requireContext().applicationContext, SHARED_STATE,true)
         }
     }
 }

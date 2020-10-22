@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
              findNavController(R.id.fragment),
             appBarConfig
         )
-        if (prefs.getUserState(applicationContext, SHARED_STATE)) {
+        if (prefs.getPrefState(applicationContext, SHARED_STATE)) {
             findNavController(R.id.fragment).navigate(R.id.action_loginFragment_to_poiListFragment)
         } else
             findNavController(R.id.fragment)
