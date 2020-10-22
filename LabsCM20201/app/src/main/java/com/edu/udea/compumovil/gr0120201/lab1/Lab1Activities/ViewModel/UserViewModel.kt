@@ -1,7 +1,6 @@
 package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.Config.UserDatabase
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.Respositories.UserRepository
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.User
+import com.edu.udea.compumovil.gr0120201.lab1.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

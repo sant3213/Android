@@ -44,8 +44,4 @@ class PoiListFragment : Fragment() {
 
         return view
     }
-    /*override fun onBackPressed() {
-        Toast.makeText(applicationContext, "Disabled Back Press", Toast.LENGTH_SHORT).show()
-    }*/
-
 }

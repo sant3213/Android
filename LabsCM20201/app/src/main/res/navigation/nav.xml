@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
+    android:windowSoftInputMode="adjustPan"
     app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.login.LoginFragment"
         android:label="Login"
+        android:windowSoftInputMode="adjustPan"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
