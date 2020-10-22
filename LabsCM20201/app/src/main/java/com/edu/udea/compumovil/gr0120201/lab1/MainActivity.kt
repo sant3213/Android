@@ -13,11 +13,12 @@ class MainActivity : AppCompatActivity() {
         lateinit var prefs: Prefs
     }
 
+    val SHARED_STATE = "userState"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         prefs = Prefs(applicationContext)
-        prefs.setUserState(applicationContext, false)
+        //prefs.setUserState(applicationContext,SHARED_STATE, false)
         setContentView(R.layout.activity_main)
         val appBarConfig= AppBarConfiguration.Builder(R.id.poiListFragment,R.id.poiListFragment)
             .build()
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
              findNavController(R.id.fragment),
             appBarConfig
         )
-        if (prefs.getUserState(applicationContext)) {
+        if (prefs.getUserState(applicationContext, SHARED_STATE)) {
             findNavController(R.id.fragment).navigate(R.id.action_loginFragment_to_poiListFragment)
         } else
             findNavController(R.id.fragment)
