@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.PoiViewModel
+import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi
 import com.edu.udea.compumovil.gr0120201.lab1.R
 import kotlinx.android.synthetic.main.fragment_poi_list.view.*
 
@@ -30,8 +31,7 @@ class PoiListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        //val poi = Poi("Título", "Unas piscinas naturales con unas aguas de un irreal color turquesa que proceden de los glaciares y que encontramos en el transcurso del río Makarora.","río Medellín")
-        //mPoiViewModel.addPoi(poi)
+
 
         mPoiViewModel = ViewModelProvider(this).get(PoiViewModel::class.java)
         mPoiViewModel.readAllData.observe(viewLifecycleOwner, Observer { poi ->

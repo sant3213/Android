@@ -14,12 +14,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.UserViewModel
+import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiFragment
 import com.edu.udea.compumovil.gr0120201.lab1.R
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.User
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.utils.Prefs
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.*
+import java.lang.IllegalStateException
 
 class LoginFragment: Fragment() {
 
@@ -71,7 +73,11 @@ class LoginFragment: Fragment() {
         }
         val deferred2: Deferred<Unit> = coroutineScope.async {
             mUserViewModel.userGotted.observe(viewLifecycleOwner, Observer { user ->
-                userr=user
+                try {
+                    userr=user
+                }catch (e:IllegalStateException){
+
+                }
             })
         }
         val deferred3: Deferred<Unit> = coroutineScope.async {
@@ -80,8 +86,16 @@ class LoginFragment: Fragment() {
         }
         val deferred4: Deferred<Unit> = coroutineScope.async {
             delay(100)
-            if (prefs.getUserState(requireContext().applicationContext))
+            if (prefs.getUserState(requireContext().applicationContext)) {
                 findNavController().navigate(R.id.action_loginFragment_to_poiListFragment)
+              // activity?.supportFragmentManager?.beginTransaction()?.ba
+            }else{
+                Toast.makeText(
+                    requireContext(),
+                    "Usuario o contraseña incorrecta",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
         coroutineScope.launch{
             deferred1.await()
