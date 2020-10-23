@@ -29,10 +29,9 @@ class LoginFragment: Fragment() {
 
     companion object{
 
-        const val SHARED_PREFS = "userState"
         lateinit var prefs: Prefs
     }
-    val SHARED_STATE = "userState"
+    val USER_STATE = "userState"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -83,7 +82,7 @@ class LoginFragment: Fragment() {
         }
         val deferred4: Deferred<Unit> = coroutineScope.async {
             delay(100)
-            if (prefs.getPrefState(requireContext().applicationContext, SHARED_STATE)) {
+            if (prefs.getPrefState(requireContext().applicationContext, USER_STATE)) {
                 findNavController().navigate(R.id.action_loginFragment_to_poiListFragment)
               // activity?.supportFragmentManager?.beginTransaction()?.ba
             }else{
@@ -114,7 +113,7 @@ class LoginFragment: Fragment() {
                 "Usuario o contraseña incorrecta",
                 Toast.LENGTH_LONG
             ).show()
-            prefs.setPrefState(requireContext().applicationContext, SHARED_STATE,false)
+            prefs.setPrefState(requireContext().applicationContext, USER_STATE,false)
 
         } else {
             Toast.makeText(
@@ -122,7 +121,7 @@ class LoginFragment: Fragment() {
                 "Ingresando",
                 Toast.LENGTH_LONG
             ).show()
-            prefs.setPrefState(requireContext().applicationContext, SHARED_STATE,true)
+            prefs.setPrefState(requireContext().applicationContext, USER_STATE,true)
         }
     }
 }

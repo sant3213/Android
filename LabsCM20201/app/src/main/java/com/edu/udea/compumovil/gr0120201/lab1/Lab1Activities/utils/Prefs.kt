@@ -9,17 +9,17 @@ class Prefs(context: Context) {
 
     private var PRIVATE_MODE = 0
     var isLoggued= false
-
+    val USER_STATE = "userState"
     fun getPrefState(context: Context, prefVariable:String):Boolean{
         val prefs: SharedPreferences = context.getSharedPreferences(prefVariable, PRIVATE_MODE)
-        isLoggued= prefs.getBoolean(LoginFragment.SHARED_PREFS, false)
+        isLoggued= prefs.getBoolean(USER_STATE, false)
       return isLoggued
     }
 
-    fun setPrefState(context: Context, prefVariable:String, isLogguedIn: Boolean){
+    fun setPrefState(context: Context, prefVariable:String, state: Boolean){
         val prefs: SharedPreferences = context.getSharedPreferences(prefVariable, PRIVATE_MODE)
         with (prefs.edit()) {
-            putBoolean(prefVariable, isLogguedIn)
+            putBoolean(prefVariable, state)
             apply()
             commit()
         }
