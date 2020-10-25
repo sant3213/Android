@@ -46,5 +46,20 @@
         <action
             android:id="@+id/action_poiListFragment_to_poiFragment"
             app:destination="@id/poiFragment" />
+        <action
+            android:id="@+id/action_poiListFragment_to_poiDetail"
+            app:destination="@id/poiDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/poiDetail"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiDetail"
+        android:label="fragment_poi_detail"
+        tools:layout="@layout/fragment_poi_detail" >
+        <action
+            android:id="@+id/action_poiDetail_to_poiListFragment"
+            app:destination="@id/poiListFragment" />
+        <argument
+            android:name="currentPoi"
+            app:argType="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi" />
     </fragment>
 </navigation>

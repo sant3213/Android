@@ -27,4 +27,16 @@ class PoiViewModel(application: Application): AndroidViewModel(application) {
             repository.addUser(poi)
         }
     }
+
+    fun updatePoi(poi: Poi){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updatePoi(poi)
+        }
+    }
+
+    fun deletePoi(poi: Poi){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deletePoi(poi)
+        }
+    }
 }

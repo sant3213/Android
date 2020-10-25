@@ -9,22 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.PoiViewModel
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi
-import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.User
 import com.edu.udea.compumovil.gr0120201.lab1.R
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_poi.*
 import kotlinx.android.synthetic.main.fragment_poi.view.*
-import kotlinx.android.synthetic.main.fragment_poi_list.view.*
-import kotlinx.android.synthetic.main.fragment_register.*
-import kotlinx.android.synthetic.main.poi_row.*
-import kotlinx.android.synthetic.main.poi_row.view.*
-import java.lang.IllegalStateException
 
 class PoiFragment : Fragment() {
 
@@ -64,7 +55,7 @@ class PoiFragment : Fragment() {
 
         if(inputCheck(title, description, location)){
             // Create Poi Object
-            val poi = Poi(title, description, location)
+            val poi = Poi(0, title, description, location)
             // Add Data to Database
             mPoiViewModel.addPoi(poi)
             Toast.makeText(requireContext(), "Agregado exitosamente!", Toast.LENGTH_LONG).show()

@@ -8,7 +8,15 @@ class PoiRepository(private val poiDao: PoiDao) {
     val readAllData: LiveData<List<Poi>> = poiDao.readAllData()
 
     suspend fun addUser(poi: Poi){
-        poiDao.addUser(poi)
+        poiDao.addPoi(poi)
+    }
+
+    suspend fun updatePoi(poi: Poi){
+        poiDao.updatePoi(poi)
+    }
+
+    suspend fun deletePoi(poi: Poi){
+        poiDao.deletePoi(poi)
     }
 
 }

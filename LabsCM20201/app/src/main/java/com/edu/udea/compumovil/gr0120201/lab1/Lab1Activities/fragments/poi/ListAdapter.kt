@@ -3,6 +3,8 @@ package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.ListFragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.edu.udea.compumovil.gr0120201.lab1.R
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi
@@ -28,6 +30,10 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         holder.itemView.title_txt.text = currentItem.title
         holder.itemView.description_txt.text = currentItem.description
         holder.itemView.location_txt.text = currentItem.location
+        holder.itemView.rowLayout.setOnClickListener{
+        val action = PoiListFragmentDirections.actionPoiListFragmentToPoiDetail(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     fun setData(poi: List<Poi>){
