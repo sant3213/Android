@@ -38,26 +38,8 @@
             android:id="@+id/action_poiFragment_to_poiListFragment"
             app:destination="@id/poiListFragment" />
         <action
-            android:id="@+id/action_poiFragment_to_settings_fragment"
-            app:destination="@id/settings_fragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/settings_fragment"
-        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.config.configurationFragment"
-        android:label="Configuracion"
-        tools:layout="@layout/fragment_settings" >
-        <action
-            android:id="@+id/action_settings_fragment_to_poiListFragment"
-            app:destination="@id/poiListFragment" />
-        <action
-            android:id="@+id/action_settings_fragment_to_poiFragment"
-            app:destination="@id/poiFragment" />
-        <action
-            android:id="@+id/action_settings_fragment_to_poiDetail"
-            app:destination="@id/poiDetail" />
-        <action
-            android:id="@+id/action_settings_fragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_poiFragment_to_settingsFragment3"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/poiListFragment"
@@ -71,8 +53,8 @@
             android:id="@+id/action_poiListFragment_to_poiDetail"
             app:destination="@id/poiDetail" />
         <action
-            android:id="@+id/action_poiListFragment_to_settings_fragment"
-            app:destination="@id/settings_fragment" />
+            android:id="@+id/action_poiListFragment_to_settingsFragment3"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/poiDetail"
@@ -86,7 +68,23 @@
             android:name="currentPoi"
             app:argType="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi" />
         <action
-            android:id="@+id/action_poiDetail_to_settings_fragment"
-            app:destination="@id/settings_fragment" />
+            android:id="@+id/action_poiDetail_to_settingsFragment3"
+            app:destination="@id/settingsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.config.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment3_to_poiFragment"
+            app:destination="@id/poiFragment" />
+        <action
+            android:id="@+id/action_settingsFragment3_to_poiListFragment"
+            app:destination="@id/poiListFragment" />
+        <action
+            android:id="@+id/action_settingsFragment3_to_poiDetail"
+            app:destination="@id/poiDetail" />
+    </fragment>
+
 </navigation>

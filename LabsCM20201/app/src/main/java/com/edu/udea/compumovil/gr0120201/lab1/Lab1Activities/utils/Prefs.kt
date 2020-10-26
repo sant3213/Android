@@ -8,10 +8,9 @@ import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.login.Log
 class Prefs(context: Context) {
 
     private var PRIVATE_MODE = 0
-    val USER_STATE = "userState"
     fun getPrefState(context: Context, prefVariable:String):Boolean{
         val prefs: SharedPreferences = context.getSharedPreferences(prefVariable, PRIVATE_MODE)
-      return prefs.getBoolean(USER_STATE, false)
+      return prefs.getBoolean(prefVariable, false)
     }
 
     fun setPrefState(context: Context, prefVariable:String, state: Boolean){

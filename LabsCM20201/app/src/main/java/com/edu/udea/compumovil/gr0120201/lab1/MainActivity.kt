@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.PopupWindow
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
@@ -53,7 +54,8 @@ class MainActivity : AppCompatActivity() {
 
         //Configuracion
         if (id == R.id.action_two) {
-            findNavController(R.id.fragment).navigate(R.id.action_poiListFragment_to_settings_fragment)
+            //findNavController(R.id.fragment)
+            findNavController(R.id.fragment).navigate(R.id.settingsFragment)
             return true
         }
         //salir de la sesion
@@ -65,8 +67,8 @@ class MainActivity : AppCompatActivity() {
             val button = view.findViewById<Button>(R.id.button)
 
             button.setOnClickListener {
-                prefs.setPrefState(this,"userState",  false)
-                findNavController(R.id.fragment).navigate(R.id.action_settings_fragment_to_loginFragment)
+                prefs.setPrefState(this,USER_STATE,  false)
+                findNavController(R.id.loginFragment)
             }
 
             val button2 = view.findViewById<Button>(R.id.button2)

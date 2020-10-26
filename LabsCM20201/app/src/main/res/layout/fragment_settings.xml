@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/settings_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible"
-    tools:visibility="visible">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Lab1Activities.fragments.config.SettingsFragment">
 
     <CheckBox
-        android:id="@+id/checkbox_meat"
+        android:id="@+id/notifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
-        android:onClick="onCheckboxClicked"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="60dp"
         android:text="Notificaciones"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkbox_cheese"
+        android:id="@+id/notifications_sound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="224dp"
-        android:onClick="onCheckboxClicked"
         android:text="Sonido de notificaciones"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_meat"
-        app:layout_constraintVertical_bias="0.168"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/notifications"
+        app:layout_constraintVertical_bias="0.086" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
