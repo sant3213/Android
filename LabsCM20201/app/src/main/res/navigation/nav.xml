@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    android:windowSoftInputMode="adjustPan"
+    app:startDestination="@id/loginFragment">
+
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.login.LoginFragment"
+        android:label="Login"
+        android:windowSoftInputMode="adjustPan"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_poiListFragment"
+            app:destination="@id/poiListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.register.RegisterFragment"
+        android:label="Registro"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poiFragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiFragment"
+        android:label="Administrar lugares"
+        tools:layout="@layout/fragment_poi" >
+        <action
+            android:id="@+id/action_poiFragment_to_poiListFragment"
+            app:destination="@id/poiListFragment" />
+        <action
+            android:id="@+id/action_poiFragment_to_settings_fragment"
+            app:destination="@id/settings_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings_fragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.config.configurationFragment"
+        android:label="Configuracion"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settings_fragment_to_poiListFragment"
+            app:destination="@id/poiListFragment" />
+        <action
+            android:id="@+id/action_settings_fragment_to_poiFragment"
+            app:destination="@id/poiFragment" />
+        <action
+            android:id="@+id/action_settings_fragment_to_poiDetail"
+            app:destination="@id/poiDetail" />
+        <action
+            android:id="@+id/action_settings_fragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poiListFragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiListFragment"
+        android:label="Lista de Lugares de interés"
+        tools:layout="@layout/fragment_poi_list">
+        <action
+            android:id="@+id/action_poiListFragment_to_poiFragment"
+            app:destination="@id/poiFragment" />
+        <action
+            android:id="@+id/action_poiListFragment_to_poiDetail"
+            app:destination="@id/poiDetail" />
+        <action
+            android:id="@+id/action_poiListFragment_to_settings_fragment"
+            app:destination="@id/settings_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poiDetail"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiDetail"
+        android:label="fragment_poi_detail"
+        tools:layout="@layout/fragment_poi_detail" >
+        <action
+            android:id="@+id/action_poiDetail_to_poiListFragment"
+            app:destination="@id/poiListFragment" />
+        <argument
+            android:name="currentPoi"
+            app:argType="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi" />
+        <action
+            android:id="@+id/action_poiDetail_to_settings_fragment"
+            app:destination="@id/settings_fragment" />
+    </fragment>
+</navigation>
