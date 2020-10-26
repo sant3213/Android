@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         prefs = Prefs(applicationContext)
-        //prefs.setPrefState(applicationContext,USER_STATE, false)
+        prefs.setPrefState(applicationContext,USER_STATE, false)
         setContentView(R.layout.activity_main)
         val appBarConfig= AppBarConfiguration.Builder(R.id.poiListFragment,R.id.poiListFragment)
             .build()
