@@ -24,7 +24,7 @@ class PoiViewModel(application: Application): AndroidViewModel(application) {
 
     fun addPoi(poi: Poi){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addUser(poi)
+            repository.addPoi(poi)
         }
     }
 

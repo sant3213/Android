@@ -12,5 +12,6 @@ data class Poi(
     val id: Int,
     val title: String,
     val description: String,
-    val location: String
+    val location: String,
+    val imageName: String
 ) : Parcelable
