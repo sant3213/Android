@@ -52,6 +52,18 @@
         android:textStyle="bold"/>
 
     <Button
+        android:id="@+id/pickImage"
+        android:layout_width="173dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="56dp"
+        android:drawableLeft="@drawable/image_icon"
+        android:text="Cargar imagen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location_in" />
+
+    <Button
         android:id="@+id/add_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +73,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location_in" />
+        app:layout_constraintTop_toBottomOf="@+id/pickImage"
+        app:layout_constraintVertical_bias="1.0" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

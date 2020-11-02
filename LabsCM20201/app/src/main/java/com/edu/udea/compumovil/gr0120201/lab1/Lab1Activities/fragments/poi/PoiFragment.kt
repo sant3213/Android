@@ -1,6 +1,8 @@
 package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi
 
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -16,10 +18,15 @@ import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi
 import com.edu.udea.compumovil.gr0120201.lab1.R
 import kotlinx.android.synthetic.main.fragment_poi.*
 import kotlinx.android.synthetic.main.fragment_poi.view.*
+import java.io.File
 
 class PoiFragment : Fragment() {
 
     private lateinit var mPoiViewModel: PoiViewModel
+    private var image:Uri? = null
+    private val PICK_IMAGES_CODE = 0
+    private lateinit var privateRootDir: File
+    private lateinit var imagesDir: File
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +44,29 @@ class PoiFragment : Fragment() {
            insertDataToDatabase()
             clearData()
         }
+
+        view.pickImage.setOnClickListener{
+            pickImage()
+        }
+
         return view
+    }
+
+    private fun pickImage(){
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select image"), PICK_IMAGES_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == PICK_IMAGES_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                val imageUri = data?.data
+
+            }
+        }
     }
 
     private fun clearData(){
@@ -51,11 +80,12 @@ class PoiFragment : Fragment() {
         var title =  title_in.text.toString()
         var description = description_in.text.toString()
         var location = location_in.text.toString()
+        var imageName = "eta"
 
 
         if(inputCheck(title, description, location)){
             // Create Poi Object
-            val poi = Poi(0, title, description, location)
+            val poi = Poi(0, title, description, location, imageName)
             // Add Data to Database
             mPoiViewModel.addPoi(poi)
             Toast.makeText(requireContext(), "Agregado exitosamente!", Toast.LENGTH_LONG).show()

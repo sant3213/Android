@@ -38,7 +38,7 @@ class PoiDetail : Fragment() {
 
         view.delete_button.setOnClickListener{
             // Create Poi Object
-            val poiToDelete = Poi(args.currentPoi.id, args.currentPoi.title, args.currentPoi.description, args.currentPoi.location)
+            val poiToDelete = Poi(args.currentPoi.id, args.currentPoi.title, args.currentPoi.description, args.currentPoi.location, args.currentPoi.imageName)
             deletItem(poiToDelete)
         }
 
@@ -54,10 +54,11 @@ class PoiDetail : Fragment() {
         val title = titleDetail_in.text.toString()
         val description = descriptionDetail_in.text.toString()
         val location = locationDetail_in.text.toString()
+        var imageName = "eta"
 
         if(inputCheck(title, description, location)){
             // Create Poi Object
-            val updatedPoi = Poi(args.currentPoi.id, title, description, location)
+            val updatedPoi = Poi(args.currentPoi.id, title, description, location, imageName)
             // Update Current Poi
             mPoiViewModel.updatePoi(updatedPoi)
             Toast.makeText(requireContext(), "Actualizado exitosamente!", Toast.LENGTH_SHORT).show()
