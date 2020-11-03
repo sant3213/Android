@@ -75,7 +75,6 @@ class PoiFragment : Fragment() {
         location_in.setText("")
     }
 
-
     private fun insertDataToDatabase(){
         var title =  title_in.text.toString()
         var description = description_in.text.toString()

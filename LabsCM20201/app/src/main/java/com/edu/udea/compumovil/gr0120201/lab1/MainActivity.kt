@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         } else
             findNavController(R.id.fragment)
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu, menu)
@@ -61,21 +62,19 @@ class MainActivity : AppCompatActivity() {
         //salir de la sesion
         if (id == R.id.action_three) {
 
-            val window = PopupWindow(this)
             val view = layoutInflater.inflate(R.layout.popup_login_warning,null)
-            window.contentView = view
-            val button = view.findViewById<Button>(R.id.button)
 
+            val button = view.findViewById<Button>(R.id.button)
+            findNavController(R.id.fragment).navigate(R.id.loginFragment)
             button.setOnClickListener {
-                prefs.setPrefState(this,USER_STATE,  false)
-                findNavController(R.id.loginFragment)
+                prefs.setPrefState(this, USER_STATE,  false)
             }
 
             val button2 = view.findViewById<Button>(R.id.button2)
             button2.setOnClickListener {
                 exitProcess(1)
             }
-            window.showAsDropDown(view)
+          //  window.showAsDropDown(view)
             return true
         }
 

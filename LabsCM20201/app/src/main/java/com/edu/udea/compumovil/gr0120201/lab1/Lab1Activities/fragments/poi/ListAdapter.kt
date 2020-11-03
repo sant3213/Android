@@ -35,7 +35,17 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = poiList[position]
+        var imageResource:Int
+
+        when(position){
+            0->imageResource = R.drawable.catedral_cove
+            1->imageResource = R.drawable.hobbitonen_nueva_zelanda
+            2->imageResource = R.drawable.parque_nacional_tongariro
+            3->imageResource = R.drawable.wai_o_tapu
+            else ->{ imageResource = R.drawable.catedral_cove}
+        }
         holder.itemView.title_txt.text = currentItem.title
+        holder.itemView.imageView.setImageResource(imageResource)
         //holder.itemView.description_txt.text = currentItem.description
         //holder.itemView.location_txt.text = currentItem.location
         //holder.itemView.imageView.setImageDrawable(ContextCompat.getDrawable())

@@ -56,6 +56,8 @@ class PoiDetail : Fragment() {
         val location = locationDetail_in.text.toString()
         var imageName = "eta"
 
+
+
         if(inputCheck(title, description, location)){
             // Create Poi Object
             val updatedPoi = Poi(args.currentPoi.id, title, description, location, imageName)
