@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
 
             val button = view.findViewById<Button>(R.id.button)
             findNavController(R.id.fragment).navigate(R.id.loginFragment)
+            prefs.setPrefState(this, USER_STATE,  false)
             button.setOnClickListener {
                 prefs.setPrefState(this, USER_STATE,  false)
             }

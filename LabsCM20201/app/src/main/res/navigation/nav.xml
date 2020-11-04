@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/poiDetail"
         android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiDetail"
-        android:label="fragment_poi_detail"
+        android:label="Detalles del lugar"
         tools:layout="@layout/fragment_poi_detail" >
         <action
             android:id="@+id/action_poiDetail_to_poiListFragment"
@@ -74,7 +74,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.config.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Configuración de la aplicación"
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment3_to_poiFragment"

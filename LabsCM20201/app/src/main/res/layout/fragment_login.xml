@@ -8,7 +8,7 @@
     android:windowSoftInputMode="adjustPan"
     tools:context=".Lab1Activities.fragments.login.LoginFragment">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -21,10 +21,9 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/border"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,11 +38,10 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
-        android:background="@drawable/border"/>
+        app:layout_constraintTop_toBottomOf="@+id/username"/>
 
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/registerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
