@@ -13,20 +13,21 @@ import androidx.navigation.fragment.navArgs
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.PoiViewModel
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi
 import com.edu.udea.compumovil.gr0120201.lab1.R
+import kotlinx.android.synthetic.main.fragment_poi.*
 import kotlinx.android.synthetic.main.fragment_poi_detail.*
 import kotlinx.android.synthetic.main.fragment_poi_detail.view.*
 
 
 class PoiDetail : Fragment() {
     private val args by navArgs<PoiDetailArgs>()
-
     private lateinit var mPoiViewModel: PoiViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
-    ): View? {
 
+    ): View? {
+        getImageToShow(args.currentPoi.imageName)
         val view = inflater.inflate(R.layout.fragment_poi_detail, container, false)
 
         mPoiViewModel = ViewModelProvider(this).get(PoiViewModel::class.java)
@@ -50,13 +51,23 @@ class PoiDetail : Fragment() {
         view.locationDetail_in.setText(currentPoi.location)
     }
 
-    private fun updatePoi(){
+    private fun getImageToShow(imageName: String) {
+        var imageResource:Int
+        when(imageName){
+            "cove"->imageResource = R.drawable.cove
+            "hobbiton"->imageResource = R.drawable.hobbiton
+            "tongariro"->imageResource = R.drawable.tongariro
+            "waiotapu"->imageResource = R.drawable.waiotapu
+            else ->{ imageResource = R.drawable.cove}
+        }
+        view?.image_view?.setImageResource(imageResource)
+    }
+
+    private fun updatePoi() {
         val title = titleDetail_in.text.toString()
         val description = descriptionDetail_in.text.toString()
         val location = locationDetail_in.text.toString()
-        var imageName = "eta"
-
-
+        val imageName = image_name.text.toString()
 
         if(inputCheck(title, description, location)){
             // Create Poi Object

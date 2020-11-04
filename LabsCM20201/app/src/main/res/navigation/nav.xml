@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/poiFragment"
-        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiFragment"
+        android:name="com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi.PoiAddFragment"
         android:label="Administrar lugares"
         tools:layout="@layout/fragment_poi" >
         <action

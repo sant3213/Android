@@ -20,13 +20,10 @@ import kotlinx.android.synthetic.main.fragment_poi.*
 import kotlinx.android.synthetic.main.fragment_poi.view.*
 import java.io.File
 
-class PoiFragment : Fragment() {
+class PoiAddFragment : Fragment() {
 
     private lateinit var mPoiViewModel: PoiViewModel
-    private var image:Uri? = null
     private val PICK_IMAGES_CODE = 0
-    private lateinit var privateRootDir: File
-    private lateinit var imagesDir: File
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,7 +76,7 @@ class PoiFragment : Fragment() {
         var title =  title_in.text.toString()
         var description = description_in.text.toString()
         var location = location_in.text.toString()
-        var imageName = "eta"
+        var imageName = image_name.text.toString()
 
 
         if(inputCheck(title, description, location)){
