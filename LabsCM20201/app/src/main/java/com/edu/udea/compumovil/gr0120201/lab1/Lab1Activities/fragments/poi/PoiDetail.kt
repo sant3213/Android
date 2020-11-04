@@ -33,6 +33,8 @@ class PoiDetail : Fragment() {
         mPoiViewModel = ViewModelProvider(this).get(PoiViewModel::class.java)
 
         updateTextValues(args.currentPoi, view)
+        view.image_view.setImageResource(getImageToShow(args.currentPoi.imageName))
+
         view.update_button.setOnClickListener {
             updatePoi()
         }
@@ -51,7 +53,7 @@ class PoiDetail : Fragment() {
         view.locationDetail_in.setText(currentPoi.location)
     }
 
-    private fun getImageToShow(imageName: String) {
+    private fun getImageToShow(imageName: String): Int {
         var imageResource:Int
         when(imageName){
             "cove"->imageResource = R.drawable.cove
@@ -60,7 +62,8 @@ class PoiDetail : Fragment() {
             "waiotapu"->imageResource = R.drawable.waiotapu
             else ->{ imageResource = R.drawable.cove}
         }
-        view?.image_view?.setImageResource(imageResource)
+        //image_view.setImageResource(imageResource)
+        return imageResource
     }
 
     private fun updatePoi() {
