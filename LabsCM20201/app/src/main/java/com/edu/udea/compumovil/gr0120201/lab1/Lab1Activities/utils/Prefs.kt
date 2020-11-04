@@ -13,6 +13,12 @@ class Prefs(context: Context) {
       return prefs.getBoolean(prefVariable, false)
     }
 
+    fun existPrefState(context: Context, prefVariable:String):Boolean{
+        val prefs: SharedPreferences = context.getSharedPreferences(prefVariable, PRIVATE_MODE)
+        println( prefs.contains(prefVariable));
+        return prefs.contains(prefVariable)
+    }
+
     fun setPrefState(context: Context, prefVariable:String, state: Boolean){
         val prefs: SharedPreferences = context.getSharedPreferences(prefVariable, PRIVATE_MODE)
         with (prefs.edit()) {

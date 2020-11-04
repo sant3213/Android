@@ -34,10 +34,14 @@ class MainActivity : AppCompatActivity() {
              findNavController(R.id.fragment),
             appBarConfig
         )
-        if (prefs.getPrefState(applicationContext, USER_STATE)) {
-            findNavController(R.id.fragment).navigate(R.id.action_loginFragment_to_poiListFragment)
-        } else
+
+        if (!prefs.existPrefState(applicationContext, USER_STATE)) {
             findNavController(R.id.fragment)
+        } else if (prefs.getPrefState(applicationContext, USER_STATE)) {
+            findNavController(R.id.fragment).navigate(R.id.action_loginFragment_to_poiListFragment)
+        } else {
+            findNavController(R.id.fragment)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
