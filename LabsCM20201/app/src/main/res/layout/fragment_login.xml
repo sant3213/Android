@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="45dp"
     android:windowSoftInputMode="adjustPan"
+    app:defaultNavHost="true"
     tools:context=".Lab1Activities.fragments.login.LoginFragment">
 
     <com.google.android.material.textfield.TextInputEditText

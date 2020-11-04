@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         prefs = Prefs(applicationContext)
+
         //prefs.setPrefState(applicationContext,USER_STATE, false)
         setContentView(R.layout.activity_main)
         val appBarConfig= AppBarConfiguration.Builder(R.id.poiListFragment, R.id.poiListFragment)
@@ -34,14 +35,14 @@ class MainActivity : AppCompatActivity() {
              findNavController(R.id.fragment),
             appBarConfig
         )
-
         if (!prefs.existPrefState(applicationContext, USER_STATE)) {
-            findNavController(R.id.fragment)
+            findNavController(R.id.fragment).navigate(R.id.loginFragment)
         } else if (prefs.getPrefState(applicationContext, USER_STATE)) {
             findNavController(R.id.fragment).navigate(R.id.action_loginFragment_to_poiListFragment)
         } else {
-            findNavController(R.id.fragment)
+            findNavController(R.id.fragment).navigate(R.id.loginFragment)
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
