@@ -1,5 +1,7 @@
 package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.poi
 
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -7,13 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.PoiViewModel
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi
 import com.edu.udea.compumovil.gr0120201.lab1.R
-import kotlinx.android.synthetic.main.fragment_poi.*
 import kotlinx.android.synthetic.main.fragment_poi_detail.*
 import kotlinx.android.synthetic.main.fragment_poi_detail.view.*
 
@@ -21,13 +23,13 @@ import kotlinx.android.synthetic.main.fragment_poi_detail.view.*
 class PoiDetail : Fragment() {
     private val args by navArgs<PoiDetailArgs>()
     private lateinit var mPoiViewModel: PoiViewModel
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
 
     ): View? {
-        getImageToShow(args.currentPoi.imageName)
         val view = inflater.inflate(R.layout.fragment_poi_detail, container, false)
 
         mPoiViewModel = ViewModelProvider(this).get(PoiViewModel::class.java)
@@ -47,10 +49,13 @@ class PoiDetail : Fragment() {
 
         return view
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun updateTextValues(currentPoi: Poi, view: View) {
         view.titleDetail_in.setText(currentPoi.title)
         view.descriptionDetail_in.setText(currentPoi.description)
         view.locationDetail_in.setText(currentPoi.location)
+        view.image_name_edit.setText(currentPoi.imageName)
+        view.descriptionDetail_in.justificationMode = JUSTIFICATION_MODE_INTER_WORD
     }
 
     private fun getImageToShow(imageName: String): Int {
@@ -62,7 +67,6 @@ class PoiDetail : Fragment() {
             "waiotapu"->imageResource = R.drawable.waiotapu
             else ->{ imageResource = R.drawable.cove}
         }
-        //image_view.setImageResource(imageResource)
         return imageResource
     }
 
@@ -70,7 +74,7 @@ class PoiDetail : Fragment() {
         val title = titleDetail_in.text.toString()
         val description = descriptionDetail_in.text.toString()
         val location = locationDetail_in.text.toString()
-        val imageName = image_name.text.toString()
+        val imageName = image_name_edit.text.toString()
 
         if(inputCheck(title, description, location)){
             // Create Poi Object

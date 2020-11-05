@@ -7,18 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.UserViewModel
-import com.edu.udea.compumovil.gr0120201.lab1.R
-import kotlinx.android.synthetic.main.fragment_login.view.*
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.User
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.utils.Prefs
+import com.edu.udea.compumovil.gr0120201.lab1.R
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.coroutines.*
-import java.lang.IllegalStateException
 
 class LoginFragment: Fragment() {
 
@@ -40,7 +40,7 @@ class LoginFragment: Fragment() {
 
         prefs = Prefs(requireContext().applicationContext)
         val view = inflater.inflate(R.layout.fragment_login, container, false)
-
+        //(activity as AppCompatActivity).supportActionBar?.hide()
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         view.registerText.setOnClickListener {
@@ -60,7 +60,7 @@ class LoginFragment: Fragment() {
         return view
     }
 
-    fun startCoroutine(userName: String, passwordIn:String){
+    fun startCoroutine(userName: String, passwordIn: String){
         val coroutineScope = CoroutineScope(Dispatchers.Main)
 
         val deferred1: Deferred<Unit> = coroutineScope.async {
@@ -70,8 +70,8 @@ class LoginFragment: Fragment() {
         val deferred2: Deferred<Unit> = coroutineScope.async {
             mUserViewModel.userGotted.observe(viewLifecycleOwner, Observer { user ->
                 try {
-                    userr=user
-                }catch (e:IllegalStateException){
+                    userr = user
+                } catch (e: IllegalStateException) {
 
                 }
             })
@@ -106,14 +106,14 @@ class LoginFragment: Fragment() {
         password.setText("")
     }
 
-    private fun validateUser(userr:User, pass:String){
+    private fun validateUser(userr: User, pass: String){
         if (userr == null || userr.password != pass) {
             Toast.makeText(
                 requireContext(),
                 "Usuario o contraseña incorrecta",
                 Toast.LENGTH_LONG
             ).show()
-            prefs.setPrefState(requireContext().applicationContext, USER_STATE,false)
+            prefs.setPrefState(requireContext().applicationContext, USER_STATE, false)
 
         } else {
             Toast.makeText(
@@ -121,7 +121,7 @@ class LoginFragment: Fragment() {
                 "Ingresando",
                 Toast.LENGTH_LONG
             ).show()
-            prefs.setPrefState(requireContext().applicationContext, USER_STATE,true)
+            prefs.setPrefState(requireContext().applicationContext, USER_STATE, true)
         }
     }
 }
