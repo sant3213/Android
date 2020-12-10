@@ -41,7 +41,12 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
             else ->{ imageResource = R.drawable.cove}
         }
         holder.itemView.title_txt.text = currentItem.title
-        holder.itemView.description_in.text = currentItem.description.substring(0,25).plus("...")
+        if(currentItem.description.count()>24) {
+            holder.itemView.description_in.text =
+                currentItem.description.substring(0, 25).plus("...")
+        }else{
+            holder.itemView.description_in.text = currentItem.description
+        }
         holder.itemView.imageView.setImageResource(imageResource)
         holder.itemView.rowLayout.setOnClickListener {
             val action = PoiListFragmentDirections.actionPoiListFragmentToPoiDetail(currentItem)

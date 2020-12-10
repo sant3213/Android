@@ -15,7 +15,6 @@ class Prefs(context: Context) {
 
     fun existPrefState(context: Context, prefVariable:String):Boolean{
         val prefs: SharedPreferences = context.getSharedPreferences(prefVariable, PRIVATE_MODE)
-        println( prefs.contains(prefVariable));
         return prefs.contains(prefVariable)
     }
 

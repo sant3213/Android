@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.PoiViewModel
+import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.login.LoginFragment
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.Poi
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.utils.Prefs
 import com.edu.udea.compumovil.gr0120201.lab1.R
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_poi_list.view.*
 
 class PoiListFragment : Fragment() {
     private lateinit var mPoiViewModel: PoiViewModel
-
+    val USER_STATE = "userState"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +29,10 @@ class PoiListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_poi_list, container, false)
+        val isLogguedIn = LoginFragment.prefs.getPrefState(requireContext().applicationContext, USER_STATE)
+        if(!isLogguedIn){
+            findNavController().navigate(R.id.loginFragment)
+        }
         // Recyclerview
         val adapter = ListAdapter()
         val recyclerView = view.recyclerview

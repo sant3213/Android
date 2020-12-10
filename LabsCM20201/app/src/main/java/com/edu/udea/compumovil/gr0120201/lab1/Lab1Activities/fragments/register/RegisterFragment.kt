@@ -2,6 +2,7 @@ package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.register
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,24 +36,28 @@ class RegisterFragment : Fragment() {
     }
 
     private fun insertDataToDatabase(){
-        val userName = addUserName.text.toString()
+        //val userName = addUserName.text.toString()
         val email = addEmail.text.toString()
         val password = addPassword.text.toString()
 
-        if(inputCheck(userName, email, password)){
+        if(isValidEmail(email, password)){
             // Create User Object
-            val user = User(userName, password)
+            val user = User(email, password)
             // Add Data to Database
             mUserViewModel.addUser(user)
             Toast.makeText(requireContext(), "Agregado exitosamente!", Toast.LENGTH_LONG).show()
             // Navigate Back
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }else{
-            Toast.makeText(requireContext(), "Por favor llene todos los campos.", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Formato incorrecto de correo o campos incompletos", Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun inputCheck(userName: String, email: String, lastName: String): Boolean{
-        return !(TextUtils.isEmpty(userName) && TextUtils.isEmpty(email) && TextUtils.isEmpty(lastName))
+    fun isValidEmail(email: CharSequence?, password: String): Boolean {
+        return if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            false
+        } else {
+            Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        }
     }
 }

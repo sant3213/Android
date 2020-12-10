@@ -2,15 +2,17 @@ package com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.login
 
 import android.app.Activity
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.ViewModel.UserViewModel
 import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.models.User
@@ -20,9 +22,8 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.coroutines.*
 
+
 class LoginFragment: Fragment() {
-
-
 
     private lateinit var mUserViewModel: UserViewModel
     var userr = User()
@@ -32,6 +33,7 @@ class LoginFragment: Fragment() {
         lateinit var prefs: Prefs
     }
     val USER_STATE = "userState"
+    private var PRIVATE_MODE = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +41,7 @@ class LoginFragment: Fragment() {
     ): View? {
 
         prefs = Prefs(requireContext().applicationContext)
+
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         //(activity as AppCompatActivity).supportActionBar?.hide()
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
@@ -54,12 +57,26 @@ class LoginFragment: Fragment() {
             val passwordIn = password.text.toString()
             val userName = username.text.toString()
             clearData()
-
-            startCoroutine(userName, passwordIn)
+            if(isValidEmail(userName)) {
+                startCoroutine(userName, passwordIn)
+            } else{
+                Toast.makeText(
+                    requireContext(),
+                    "Formato de correo inválido",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
         return view
     }
 
+    fun isValidEmail(target: CharSequence?): Boolean {
+        return if (TextUtils.isEmpty(target)) {
+            false
+        } else {
+            Patterns.EMAIL_ADDRESS.matcher(target).matches()
+        }
+    }
     fun startCoroutine(userName: String, passwordIn: String){
         val coroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -81,8 +98,9 @@ class LoginFragment: Fragment() {
             validateUser(userr, passwordIn)
         }
         val deferred4: Deferred<Unit> = coroutineScope.async {
-            delay(100)
-            if (prefs.getPrefState(requireContext().applicationContext, USER_STATE)) {
+            delay(300)
+            val isLoggued = prefs.getPrefState(requireContext().applicationContext, USER_STATE)
+            if (isLoggued) {
                 findNavController().navigate(R.id.action_loginFragment_to_poiListFragment)
               // activity?.supportFragmentManager?.beginTransaction()?.ba
             }else{
@@ -107,21 +125,22 @@ class LoginFragment: Fragment() {
     }
 
     private fun validateUser(userr: User, pass: String){
-        if (userr == null || userr.password != pass) {
-            Toast.makeText(
-                requireContext(),
-                "Usuario o contraseña incorrecta",
-                Toast.LENGTH_LONG
-            ).show()
-            prefs.setPrefState(requireContext().applicationContext, USER_STATE, false)
-
+            if(userr.password.isEmpty()){
+                Toast.makeText(
+                    requireContext(),
+                    "Usuario o contraseña incorrecta",
+                    Toast.LENGTH_LONG
+                ).show()
+                prefs.setPrefState(requireContext().applicationContext, USER_STATE, false)
         } else {
-            Toast.makeText(
-                requireContext(),
-                "Ingresando",
-                Toast.LENGTH_LONG
-            ).show()
-            prefs.setPrefState(requireContext().applicationContext, USER_STATE, true)
+            if (userr.password == pass) {
+                Toast.makeText(
+                    requireContext(),
+                    "Ingresando",
+                    Toast.LENGTH_LONG
+                ).show()
+                prefs.setPrefState(requireContext().applicationContext, USER_STATE, true)
+            }
         }
     }
 }

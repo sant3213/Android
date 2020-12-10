@@ -14,6 +14,7 @@ import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import com.edu.udea.compumovil.gr0120201.lab1.Lab1Activities.fragments.config.SettingsFragment
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         )
         if (!prefs.existPrefState(applicationContext, USER_STATE)) {
             findNavController(R.id.fragment).navigate(R.id.loginFragment)
-        } else if (prefs.getPrefState(applicationContext, USER_STATE)) {
+        } else if (prefs.getPrefState(this, USER_STATE)) {
             findNavController(R.id.fragment).navigate(R.id.action_loginFragment_to_poiListFragment)
         } else {
             findNavController(R.id.fragment).navigate(R.id.loginFragment)

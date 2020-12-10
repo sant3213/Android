@@ -40,7 +40,7 @@ class SettingsFragment : Fragment() {
         })
 
         view.notifications_sound.setOnClickListener(View.OnClickListener {
-            saveNotificationState(view, NOTIFICATION_SOUND_STATE)
+            saveNotificationSoundState(view, NOTIFICATION_SOUND_STATE)
         })
 
         return view
